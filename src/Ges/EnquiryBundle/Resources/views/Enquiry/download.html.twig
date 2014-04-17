@@ -1,0 +1,17 @@
+{% extends 'GesEnquiryBundle::default_layout.html.twig' %}
+
+{% block body %}
+
+    {% if errormsg %}
+        <h4> {{ errormsg }} </h4>
+    {% endif %}
+
+    <form action="{{ path('enquiry_download') }}" method="post">
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit" class="btn">Download Enquires CSV</button>
+        </p>
+    </form>
+
+{% endblock %}

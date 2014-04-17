@@ -1,0 +1,46 @@
+{% extends 'GesEnquiryBundle::default_layout.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="{{ asset('css/notify.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body -%}
+    <h1>Enquiry Notification</h1>
+    <a href="{{ path('enquiry_show', { 'id': entity.id }) }}" class="btn">
+        Back to Enquiry
+    </a>
+    <hr>
+
+    {% if app.session.hasFlash('notice') %}
+        <div class="flash-notice">
+            {{ app.session.flash('notice') }}
+        </div>
+    {% endif %}
+
+    <form action="{{ path('enquiry_sendnotify', { 'id': entity.id }) }}" method="post"  {{ form_enctype(notify_form) }} id="notify_frm">
+        <div>
+            {{ form_row(notify_form.notify_to) }}
+        </div>
+        <div id=department_block>
+            {{ form_row(notify_form.department) }}
+        </div>
+        <div id=notify_block>
+            {{ form_row(notify_form.notify_email) }} <span id="error_mess">Please fill out this field</span>
+        </div>
+        <div>
+            {{ form_row(notify_form.notify_text) }}
+        </div>
+        <div>
+            <button type="submit" class="btn">Send mail</button>
+        </div>
+    </form>
+
+{% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script type="text/javascript" src="{{ asset('js/notify.js') }}"></script>
+    {% endblock %}

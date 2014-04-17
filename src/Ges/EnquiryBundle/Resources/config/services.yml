@@ -1,0 +1,7 @@
+parameters:
+#    ges_enquiry.example.class: Ges\EnquiryBundle\Example
+
+services:
+#    ges_enquiry.example:
+#        class: %ges_enquiry.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

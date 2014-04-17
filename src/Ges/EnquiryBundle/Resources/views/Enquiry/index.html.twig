@@ -1,0 +1,43 @@
+{% extends 'GesEnquiryBundle::default_layout.html.twig' %}
+
+{% block body -%}
+    <h1>Enquiry list</h1>
+    <a href="{{ path('enquiry_new') }}" class="btn">
+        Report a new Enquiry
+    </a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Enquiry Type</th>
+            <th>Enquiry Level</th>
+            <th>Department</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{% if entity.enquirydate %}{{ entity.enquirydate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.familyname }},{{ entity.firstname }}</td>
+                <td>{{ entity.enquirytypeid }}</td>
+                <td>{{ entity.enquirylevelid }}</td>
+                <td>{{ entity.departmentid }}</td>
+                <td>{% if entity.isapproved==0 %}Pending{% endif %}{% if entity.isapproved==1 %}Approved{% endif %}</td>
+                <td>
+                    <a href="{{ path('enquiry_show', { 'id': entity.id }) }}">View</a> | <a href="{{ path('enquiry_edit', { 'id': entity.id }) }}">Edit</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="8"><em>{{ entity.description }}</em></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(entities) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'GesEnquiryBundle::default_layout.html.twig' %}
+
+{% block body -%}
+    <h1>Enquiry Level creation</h1>
+    <a href="{{ path('enquirylevel') }}" class="btn">
+        Back to the list
+    </a>
+    <hr>
+    <form action="{{ path('enquirylevel_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit" class="btn">Create</button>
+        </p>
+    </form>
+
+
+{% endblock %}

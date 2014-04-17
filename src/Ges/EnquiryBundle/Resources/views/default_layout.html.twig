@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Ges Enquiry Enquiry Database{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/enquiry.css') }}"/>
+    {% block stylesheets %}{% endblock %}
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% block headJS %}{% endblock %}
+</head>
+<body>
+<div class='container'>
+    <div class='header'>GENERAL ENQUIRY SYSTEM</div>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <div class='navbar navbar-inverse'>
+        <div class='navbar-inner nav-collapse'>
+            <ul class="nav">
+                <li><a href="{{ path('enquiry') }}">All Enquiries</a></li>
+                <li><a href="{{ path('enquiry_new') }}">New Enquiry</a></li>
+                <li><a href="{{ path('enquiry_search') }}">Search</a></li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('department') }}">Department</a></li>
+                    <li><a href="{{ path('enquirylevel') }}">Enquiry Level</a></li>
+                    <li><a href="{{ path('enquirytype') }}">Enquiry Type</a></li>
+                    <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                {% endif %}
+                <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    <div id='content' class='row-fluid'>
+        <div class='span12 main'>
+           {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+    <script>
+        function deleteConfirm(){
+            return confirm("Are you sure you want to delete?");
+
+        }
+    </script>
+{% endblock %}
+
+
+</body>
+
+</html>

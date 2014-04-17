@@ -1,0 +1,63 @@
+{# default Sliding pagination control implementation #}
+
+{% if pageCount > 1 %}
+    <div class="pagination">
+        <ul>
+
+            {% if first is defined  %}
+
+                {% if current != first %}
+                    <li>
+                        <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">First Page</a>
+                    </li>
+                {% else %}
+                    <li class="disabled">
+                        <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">First Page</a>
+                    </li>
+                {% endif %}
+            {% endif %}
+
+            {% if previous is defined %}
+                <li>
+                    <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}">Previous Page</a>
+                </li>
+            {% else %}
+                <li class="disabled">
+                    <a href="javascript:void(0)">Previous Page</a>
+                </li>
+            {% endif %}
+
+            {% for page in pagesInRange %}
+                {% if page != current %}
+                    <li>
+                        <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+                    </li>
+                {% else %}
+                    <li class="active"><a href="javascript:void(0);"> {{ page }}</a></li>
+                {% endif %}
+
+            {% endfor %}
+
+            {% if next is defined %}
+                <li>
+                    <a href="{{ path(route, query|merge({(pageParameterName): next})) }}">Next Page</a>
+                </li>
+            {% else %}
+                <li class="disabled"><a href="javascript:void(0);">Next Page</a></li>
+            {% endif %}
+
+            {% if last is defined  %}
+                {% if current != last %}
+                    <li>
+                        <a href="{{ path(route, query|merge({(pageParameterName): last})) }}">Last Page</a>
+                    </li>
+                {% else %}
+                    <li class="disabled">
+                        <a href="javascript:void(0);">Last Page</a>
+                    </li>
+                {% endif %}
+            {% endif %}
+
+        </ul>
+    </div>
+{% endif %}

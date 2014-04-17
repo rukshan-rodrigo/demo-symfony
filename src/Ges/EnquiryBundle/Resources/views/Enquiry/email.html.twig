@@ -1,0 +1,126 @@
+{% block body -%}
+
+    <div>
+        {{ notify_text }}
+    </div>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Family name</th>
+                <td>{{ entity.familyname }}</td>
+            </tr>
+            <tr>
+                <th>First name</th>
+                <td>{{ entity.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ entity.age }}</td>
+            </tr>
+            <tr>
+                <th>File number</th>
+                <td>{{ entity.filenumber }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ entity.gender }}</td>
+            </tr>
+            <tr>
+                <th>Leader name</th>
+                <td>{{ entity.leadername }}</td>
+            </tr>
+            <tr>
+                <th>Leader email</th>
+                <td>{{ entity.leaderemail }}</td>
+            </tr>
+            <tr>
+                <th>Trip code</th>
+                <td>{{ entity.tripcode }}</td>
+            </tr>
+            <tr>
+                <th>Enquiry date</th>
+                <td>{{ entity.enquirydate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ entity.country }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ entity.city }}</td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td>{{ entity.place }}</td>
+            </tr>
+            <tr>
+                <th>Report by</th>
+                <td>{{ entity.reportby }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Accident details</th>
+                <td>{{ entity.accidentdetails }}</td>
+            </tr>
+            <tr>
+                <th>Passenger symptoms</th>
+                <td>{{ entity.passengersymptoms }}</td>
+            </tr>
+            <tr>
+                <th>Leader action</th>
+                <td>{{ entity.leaderaction }}</td>
+            </tr>
+            <tr>
+                <th>Enquiry treatment</th>
+                <td>{{ entity.enquirytreatment }}</td>
+            </tr>
+            <tr>
+                <th>Enquiry history</th>
+                <td>{{ entity.enquiryhistory }}</td>
+            </tr>
+            <tr>
+                <th>Followup details</th>
+                <td>{{ entity.followupdetails }}</td>
+            </tr>
+            <tr>
+                <th>Dmc operator</th>
+                <td>{{ entity.dmcoperator }}</td>
+            </tr>
+            <tr>
+                <th>Manager comments</th>
+                <td>{{ entity.managercomments }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if entity.isapproved==0 %}Pending{% endif %}{% if entity.isapproved==1 %}Approved{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Department</th>
+                <td>{{ entity.departmentid }}</td>
+            </tr>
+            <tr>
+                <th>Enquiry Type</th>
+                <td>{{ entity.enquirytypeid }}</td>
+            </tr>
+            <tr>
+                <th>Enquiry Level</th>
+                <td>{{ entity.enquirylevelid }}</td>
+            </tr>
+            <tr>
+                <th>Enquiry Created Date</th>
+                <td>{{ entity.createdat|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Enquiry Modified Date</th>
+                <td>{{ entity.modifiedat|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Record inserted by:</th>
+                <td>{{ entity.userid }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

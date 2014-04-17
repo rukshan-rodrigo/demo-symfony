@@ -1,0 +1,17 @@
+{% extends 'GesEnquiryBundle::default_layout.html.twig' %}
+
+{% block body -%}
+    <h1>Enquiry edit</h1>
+    <a href="{{ path('enquiry') }}" class="btn">
+        Back to the list
+    </a>
+    <hr>
+    <form action="{{ path('enquiry_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT" />
+        {{ form_widget(edit_form) }}
+        <p>
+            <button type="submit" class="btn">Edit Enquiry</button>
+        </p>
+    </form>
+
+{% endblock %}

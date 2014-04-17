@@ -1,0 +1,7 @@
+ges_enquiry:
+    resource: "@GesEnquiryBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ges_user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /

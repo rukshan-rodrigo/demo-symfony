@@ -1,0 +1,22 @@
+{% extends 'GesEnquiryBundle::default_layout.html.twig' %}
+
+{% block body -%}
+    <h1>Enquiry Level Edit</h1>
+    <a href="{{ path('enquirylevel') }}" class="btn">
+        Back to the list
+    </a>
+    <hr>
+    <form action="{{ path('enquirylevel_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT"/>
+        {{ form_widget(edit_form) }}
+        <p>
+            <button type="submit" class="btn">Edit Record</button>
+        </p>
+    </form>
+
+    <form action="{{ path('enquirylevel_delete', { 'id': entity.id }) }}" method="post" onclick="return deleteConfirm();">
+        <input type="hidden" name="_method" value="DELETE"/>
+        {{ form_widget(delete_form) }}
+        <button type="submit" class="btn">Delete</button>
+    </form>
+{% endblock %}

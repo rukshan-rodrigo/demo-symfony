@@ -1,0 +1,27 @@
+{% extends 'GesEnquiryBundle::default_layout.html.twig' %}
+{% block body %}
+
+    <div>
+        {% for flashMessage in app.session.flashbag.get('useradded') %}
+            <div class="flash-notice">
+                <h4>{{ flashMessage }}</h4>
+            </div>
+        {% endfor %}
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+            <ul>
+                {% for role in app.user.roles %}
+                    <li>{{ role }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        {% endif %}
+    </div>
+
+    {{ block('fos_user_content') }}
+{% endblock %}
